@@ -9,11 +9,13 @@ class HumanPlayer implements Player {
 
     @Override
     public long askNextGuess() {
-        return 0;
+        Scanner myObj = new Scanner(System.in);
+        long n = myObj.nextLong();
+        myObj.nextLine();
+        return n;
     }
 
     @Override
     public void respond(boolean lowerOrGreater) {
-
     }
 }

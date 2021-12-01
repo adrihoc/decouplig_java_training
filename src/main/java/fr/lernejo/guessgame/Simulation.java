@@ -1,7 +1,7 @@
 package fr.lernejo.guessgame;
 
 import fr.lernejo.logger.*;
-import java.util.Scanner;
+import java.security.SecureRandom;
 
 public class Simulation {
 
@@ -10,11 +10,14 @@ public class Simulation {
     private long numberToGuess; //TODO add variable type
 
     public Simulation(Player player) {
-        //TODO implement me
+        SecureRandom random = new SecureRandom();
+        initialize(random.nextInt(100));
+        loopUntilPlayerSucceed();
+
     }
 
     public void initialize(long numberToGuess) {
-        numberToGuess = 20;
+
     }
 
     /**
@@ -22,10 +25,8 @@ public class Simulation {
      */
     private boolean nextRound() {
         System.out.println("Enter a number:");
-        Scanner myObj = new Scanner(System.in);
-        long n = myObj.nextLong();
-        myObj.nextLine();
 
+        long n = player.askNextGuess();
         if (n > numberToGuess) {
         }
         else if (n < numberToGuess) {
@@ -40,8 +41,8 @@ public class Simulation {
 
     public void loopUntilPlayerSucceed() {
         //TODO implement me
-        while (nextRound()) {
+        do {
             nextRound();
-        }
+        } while (nextRound());
     }
 }
